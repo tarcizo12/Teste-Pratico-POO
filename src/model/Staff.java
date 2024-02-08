@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import java.time.LocalDate;
 
@@ -7,7 +7,13 @@ public class Staff {
     private Occupation occupation;
     private Double finalSalary;
     private LocalDate contractDate;
-    
+
+    public Staff(String name, Occupation occupation, LocalDate contractDate ) {
+        this.name = name;
+        this.occupation = occupation;
+        this.contractDate = contractDate;
+    }
+
     public String getName() {
         return name;
     }
@@ -33,7 +39,6 @@ public class Staff {
         this.contractDate = contractDate;
     }
 
-    
 }
 
 
