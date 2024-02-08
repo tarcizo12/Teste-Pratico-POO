@@ -6,6 +6,14 @@ public class Sale {
     private Double valueOfSale;
     private Staff  staff;
     private LocalDate dateOfSale;
+
+    public Sale(Double valueOfSale, Staff staff, LocalDate dateOfSale) {
+        this.valueOfSale = valueOfSale;
+        this.staff = staff;
+        this.dateOfSale = dateOfSale;
+    }
+
+    public Sale(){}
     
     public Double getValueOfSale() {
         return valueOfSale;
@@ -25,12 +33,4 @@ public class Sale {
     public void setDateOfSale(LocalDate dateOfSale) {
         this.dateOfSale = dateOfSale;
     }
-    
-    public Sale(Double valueOfSale, Staff staff, LocalDate dateOfSale) {
-        this.valueOfSale = valueOfSale;
-        this.staff = staff;
-        this.dateOfSale = dateOfSale;
-    }
-
-    
 }
