@@ -72,7 +72,7 @@ public class StaffService {
     * @param listOfStaffs
     * @param date
     */
-    public Staff highestPaidEmployeeInMonth(List<Staff> listOfStaffs, LocalDate date){
+    public Staff findHighestPaidEmployee(List<Staff> listOfStaffs, LocalDate date){
         Staff highestPaid = null;
 
         for(Staff currentStaff : listOfStaffs){
@@ -95,6 +95,38 @@ public class StaffService {
         return highestPaid;
     };
 
+
+    /**
+    "Um método que receba uma lista somente com os funcionários que recebem
+    benefícios, mês e ano e retorne o nome do funcionário que recebeu o valor mais
+    alto em benefícios no mês."
+    * @param listOfStaffs
+    * @param date
+    */
+    public String findEmployeeWithHighestBenefits(List<Staff> listOStaffs, LocalDate date){
+        Staff highestPaidEmployeeInMonth = null;
+        Double bestValueOfBenefit = 0.00;
+
+        for(Staff staffWithBenefit : listOStaffs){
+            staffWithBenefit.setFinalSalary(
+                calculateSalary(staffWithBenefit, date)
+            );
+
+            Double currentValueOfBennefit = calculateBenefit(staffWithBenefit, date);
+
+            if (highestPaidEmployeeInMonth != null) {
+                if (currentValueOfBennefit > bestValueOfBenefit) {
+                    bestValueOfBenefit = currentValueOfBennefit;
+                    highestPaidEmployeeInMonth = staffWithBenefit;
+                }
+            }else{
+                highestPaidEmployeeInMonth = staffWithBenefit;
+            }
+        };
+
+        return highestPaidEmployeeInMonth.getName() + "   " +bestValueOfBenefit;
+    };
+
     private Double calculateSalaryWithBenefits(Staff staff, LocalDate date){
         staff.setFinalSalary(
             calculateSalary(staff, date)
@@ -111,7 +143,6 @@ public class StaffService {
         int yearsOfService = DateUtils.calculateYearsPassed(
             staff.getContractDate()
         );
-
 
         return initialSalary + calculateAnnualServiceBonus(staff.getOccupation(),yearsOfService);
     };

@@ -32,8 +32,12 @@ public class Main {
         //     staffService.totalBenefitsPaidOnMonth(staffsWithBenefit,dataInput)
         // );
 
+        // System.out.println(
+        //     staffService.findHighestPaidEmployee(dataStaff, dataInput)
+        // );
+
         System.out.println(
-            staffService.highestPaidEmployeeInMonth(dataStaff, dataInput).getName()
+            staffService.findEmployeeWithHighestBenefits(dataStaff, dataInput)
         );
     }
 }
