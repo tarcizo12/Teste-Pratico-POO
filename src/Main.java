@@ -6,7 +6,7 @@ import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import model.Sale;
+import model.Occupation;
 import model.Staff;
 
 public class Main {
@@ -19,6 +19,10 @@ public class Main {
         List<Staff> staffsWithBenefit = dataStaff.stream()
                 .filter(staff -> staff.getRecivesBenefit())
                 .collect(Collectors.toList());
+
+        List<Staff> sellers = staffsWithBenefit.stream()
+        .filter(staff -> staff.getOccupation().equals(Occupation.SELLER))
+        .collect(Collectors.toList());
         
         // System.out.println(
         //     staffService.monthlyTotalCompensation(dataStaff, dataInput)
@@ -36,8 +40,14 @@ public class Main {
         //     staffService.findHighestPaidEmployee(dataStaff, dataInput)
         // );
 
+        // System.out.println(
+        //     staffService.findNameOfStaffWithHighestBenefits(dataStaff, dataInput)
+        // );
+
+        
         System.out.println(
-            staffService.findEmployeeWithHighestBenefits(dataStaff, dataInput)
+            staffService.findTopSellingVendor(sellers, dataInput)
         );
-    }
-}
+        
+    };
+};

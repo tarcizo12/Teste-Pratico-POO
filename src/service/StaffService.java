@@ -3,7 +3,7 @@ import model.Staff;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import java.util.Map;
 import common.DateUtils;
 import data.SaleData;
 import model.Occupation;
@@ -13,6 +13,7 @@ public class StaffService {
     public StaffService(){}
     private static final Double TWENTY_PERCENT = 0.2;
     private static final Double THIRTY_PERCENT = 0.3;
+    private SaleService saleService = new SaleService();
 
     /**
     "Um método que receba uma lista de funcionários, mês e ano e retorne o valor total
@@ -95,7 +96,6 @@ public class StaffService {
         return highestPaid;
     };
 
-
     /**
     "Um método que receba uma lista somente com os funcionários que recebem
     benefícios, mês e ano e retorne o nome do funcionário que recebeu o valor mais
@@ -103,7 +103,7 @@ public class StaffService {
     * @param listOfStaffs
     * @param date
     */
-    public String findEmployeeWithHighestBenefits(List<Staff> listOStaffs, LocalDate date){
+    public String findNameOfStaffWithHighestBenefits(List<Staff> listOStaffs, LocalDate date){
         Staff highestPaidEmployeeInMonth = null;
         Double bestValueOfBenefit = 0.00;
 
@@ -124,7 +124,35 @@ public class StaffService {
             }
         };
 
-        return highestPaidEmployeeInMonth.getName() + "   " +bestValueOfBenefit;
+        return highestPaidEmployeeInMonth.getName();
+    };
+
+    /**
+    "Um método que receba uma lista de vendedores, mês e ano e retorne o que mais
+    vendeu no mês."
+    * @param listOfSellers
+    * @param date
+    */
+    public Staff findTopSellingVendor(List<Staff> listOfSellers, LocalDate date){
+        Map<Staff, Double> salesSummary = saleService.resumeOfSales();
+        Staff bestSeller = null;
+        Double bestSumOfSales = 0.00;
+
+        for (Map.Entry<Staff, Double> entry : salesSummary.entrySet()) {
+            Staff sellerKey = entry.getKey();
+            Double sumOfSales = entry.getValue();
+
+            if (bestSeller != null) {
+                if(sumOfSales > bestSumOfSales){
+                    bestSumOfSales = sumOfSales;
+                    bestSeller = sellerKey;
+                }
+            }else{
+                bestSeller = entry.getKey();
+            };
+        }
+        
+        return bestSeller;
     };
 
     private Double calculateSalaryWithBenefits(Staff staff, LocalDate date){
