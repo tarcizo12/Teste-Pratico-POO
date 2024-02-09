@@ -11,14 +11,13 @@ public class DateUtils {
      * Verifica a vigencia entre uma data passada até o momento atual
      * @param previousDate
      */
-    public static int calculateYearsPassed(LocalDate previousDate) {
-        LocalDate currentDate = LocalDate.now();
+    public static int calculateYearsPassed(LocalDate dataSource, LocalDate dataTarget) {
 
-        if (previousDate.isAfter(currentDate)) {
+        if (dataSource.isAfter(dataTarget)) {
             throw new IllegalArgumentException("A data anterior não pode ser posterior à data atual.");
         };
 
-        Period period = Period.between(previousDate, currentDate);
+        Period period = Period.between(dataSource, dataTarget);
         
         return period.getYears();
     }

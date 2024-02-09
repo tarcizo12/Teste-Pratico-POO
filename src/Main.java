@@ -12,9 +12,8 @@ import model.Staff;
 public class Main {
     public static void main(String[] args) throws Exception {
         StaffService staffService = new StaffService();
-
+        LocalDate dataInput = LocalDate.of(2021, Month.DECEMBER, 1);
         List<Staff> dataStaff = StaffData.getAllStaffRegisters();
-        LocalDate dataInput = LocalDate.of(2021, Month.JANUARY, 1);
 
         List<Staff> staffsWithBenefit = dataStaff.stream()
                 .filter(staff -> staff.getRecivesBenefit())
@@ -24,9 +23,10 @@ public class Main {
         .filter(staff -> staff.getOccupation().equals(Occupation.SELLER))
         .collect(Collectors.toList());
         
-        // System.out.println(
-        //     staffService.monthlyTotalCompensation(dataStaff, dataInput)
-        // );
+        System.out.println(
+            "Valor total pago: " +"R$ "+ staffService.monthlyTotalCompensation(dataStaff, dataInput)
+            +"\nPara a data -> " + dataInput.toString()
+        );
 
         // System.out.println(
         //     staffService.totalSalaryPaidInMonth(dataStaff,dataInput)
@@ -43,11 +43,10 @@ public class Main {
         // System.out.println(
         //     staffService.findNameOfStaffWithHighestBenefits(dataStaff, dataInput)
         // );
-
         
-        System.out.println(
-            staffService.findTopSellingVendor(sellers, dataInput)
-        );
+        // System.out.println(
+        //     staffService.findTopSellingVendor(sellers, dataInput)
+        // );
         
     };
 };

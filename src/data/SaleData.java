@@ -2,10 +2,7 @@ package data;
 
 import model.Occupation;
 import model.Sale;
-
-import java.time.LocalDate;
 import java.time.Month;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

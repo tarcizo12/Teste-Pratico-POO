@@ -169,7 +169,7 @@ public class StaffService {
         Double initialSalary = staff.getOccupation().getInitialSalary();
 
         int yearsOfService = DateUtils.calculateYearsPassed(
-            staff.getContractDate()
+            staff.getContractDate() , dateSource
         );
 
         return initialSalary + calculateAnnualServiceBonus(staff.getOccupation(),yearsOfService);
@@ -226,7 +226,9 @@ public class StaffService {
     
     private Double getBenefitOfSecretary(Staff staff, LocalDate dateSource) throws Exception{
         if (staff.getOccupation().equals(Occupation.SECRETARY)) {
-            return staff.getFinalSalary()*TWENTY_PERCENT;   
+            Double bonusValue = staff.getFinalSalary()*TWENTY_PERCENT;
+            
+            return bonusValue ;   
         }else{
             throw new IllegalArgumentException("Somente um secretário pode realizar essa operação");
         }
