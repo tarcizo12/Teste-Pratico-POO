@@ -82,7 +82,6 @@ public class StaffService {
                 calculateSalaryWithBenefits(currentStaff, date)
             );
 
-            System.out.println(currentStaff.getName() + " recebeu: " + currentStaff.getFinalSalary());
             
             if (highestPaid != null) {
                 if(currentStaff.getFinalSalary() > highestPaid.getFinalSalary()){
