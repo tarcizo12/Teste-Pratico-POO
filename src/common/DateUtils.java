@@ -38,7 +38,7 @@ public class DateUtils {
         return lastDayOfMonth;
     };
 
-        /**
+    /**
      * Retorna a string data em formato brasileirro.
      * @param dataString
      */

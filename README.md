@@ -7,6 +7,7 @@ para a resolução de um cenário onde se deve ser feito o controle e gestão da
 
 ## Abordagem e Raciocínio
 
+
 ### Visão Geral do Problema
 
 O problema proposto envolve a modelagem de funcionários em uma empresa, cada um ocupando um cargo específico com salários e benefícios distintos. Além disso, há o registro de vendas para os vendedores ao longo dos meses. A tarefa é implementar métodos em Java que permitam realizar diversas análises sobre os pagamentos dos funcionários e suas performances mensais.
@@ -94,15 +95,12 @@ Com a estrutura de dados definida, a próxima etapa envolveu a criação de Enum
 
 #### 3.3. Implementação das Regras de Negócio
 
-A fase subsequente focou na implementação das regras de negócio. Nesta
-
- etapa, foram desenvolvidas as lógicas específicas para o cálculo de salários, benefícios, análise de desempenho e demais funcionalidades relacionadas aos requisitos do projeto. A integração dessas regras consolidou a funcionalidade do sistema.
+A fase subsequente focou na implementação das regras de negócio. Nesta etapa, foram desenvolvidas as lógicas específicas para o cálculo de salários, benefícios, análise de desempenho e demais funcionalidades relacionadas aos requisitos do projeto. A integração dessas regras consolidou a funcionalidade do sistema.
 
 Ao dividir a implementação em etapas claras e progressivas, foi possível construir o projeto de maneira organizada e coerente. Essa abordagem facilitou a identificação de eventuais problemas, permitindo a realização de testes e validações ao final de cada etapa para garantir a robustez e eficácia do sistema.
 
 ## Conclusão
-
-O desenvolvimento do projeto proporcionou aprendizados significativo ao reforçar a importância do grande pilar que é a Programação Orientada a Objetos em desenvolvimento Java.
+O resolução do projeto proporcionou aprendizados significativo ao reforçar a importância do grande pilar que é a Programação Orientada a Objetos em desenvolvimento Java. 
 
 ## Contato
 
