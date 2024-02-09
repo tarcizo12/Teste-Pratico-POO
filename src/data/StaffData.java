@@ -13,19 +13,19 @@ public enum StaffData {
         new Staff("Jorge Carvalho", Occupation.SECRETARY, LocalDate.of(2018, Month.JANUARY, 1))
     ),
     MARIA_SOUZA(
-        new Staff("Maria Souza", Occupation.SECRETARY, LocalDate.of(2015, Month.DECEMBER, 12))
+        new Staff("Maria Souza", Occupation.SECRETARY, LocalDate.of(2015, Month.DECEMBER, 1))
     ),
     ANA_SILVA(
-        new Staff("Ana Silva", Occupation.SELLER, LocalDate.of(2021, Month.DECEMBER, 12))
+        new Staff("Ana Silva", Occupation.SELLER, LocalDate.of(2021, Month.DECEMBER, 1))
     ),
     JOAO_MENDES(
-        new Staff("João Mendes", Occupation.SELLER, LocalDate.of(2021, Month.DECEMBER,12))
+        new Staff("João Mendes", Occupation.SELLER, LocalDate.of(2021, Month.DECEMBER,1))
     ),
     JULIANA_ALVES(
-        new Staff("Juliana Alves", Occupation.MANAGER, LocalDate.of(2017, Month.JULY,7))
+        new Staff("Juliana Alves", Occupation.MANAGER, LocalDate.of(2017, Month.JULY,1))
     ),
     BENTO_ALBION(
-        new Staff("Bento Albino", Occupation.MANAGER, LocalDate.of(2014, Month.MARCH,3))
+        new Staff("Bento Albino", Occupation.MANAGER, LocalDate.of(2014, Month.MARCH,1))
     );
 
     private Staff staff;

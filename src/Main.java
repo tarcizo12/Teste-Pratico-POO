@@ -1,26 +1,28 @@
 import data.SaleData;
 import data.StaffData;
+
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import model.Sale;
 import model.Staff;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        StaffService staffService = new StaffService();
+
         List<Staff> dataStaff = StaffData.getAllStaffRegisters();
-        List<Sale> saleStaff = SaleData.getAllSales();
+        List<Sale> dataSale = SaleData.getAllSales();
+        LocalDate dataInput = LocalDate.of(2021, Month.JANUARY, 1);
 
-        for(Sale sale : saleStaff){
-            System.out.println(
-                "vendedor: " + sale.getStaff().getName() + "\n" 
-                +"valor da venda: "+ sale.getValueOfSale());
-        }
-
-        System.out.println("\n"+"\n");
+        List<Staff> staffsWithBenefit = dataStaff.stream()
+                .filter(staff -> staff.getRecivesBenefit())
+                .collect(Collectors.toList());
         
-        for(Staff staff : dataStaff){
-            String reciveBenefit = staff.getRecivesBenefit() ? "Sim" : "Não";
-            System.out.println(staff.getName() + "recebe beneficio?  " + reciveBenefit);
-        }
+        System.out.println(
+            staffService.monthlyTotalPaymentValue(dataStaff, dataInput)
+        );
     }
 }
