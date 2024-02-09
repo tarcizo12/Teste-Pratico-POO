@@ -14,7 +14,6 @@ public class Main {
         StaffService staffService = new StaffService();
 
         List<Staff> dataStaff = StaffData.getAllStaffRegisters();
-        List<Sale> dataSale = SaleData.getAllSales();
         LocalDate dataInput = LocalDate.of(2021, Month.JANUARY, 1);
 
         List<Staff> staffsWithBenefit = dataStaff.stream()
@@ -27,6 +26,11 @@ public class Main {
 
         System.out.println(
             staffService.totalSalaryPaidInMonth(dataStaff,dataInput
+            )
+        );
+
+        System.out.println(
+            staffService.totalBenefitsPaidOnMonth(staffsWithBenefit,dataInput
             )
         );
     }

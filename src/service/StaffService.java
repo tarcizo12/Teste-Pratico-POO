@@ -15,7 +15,7 @@ public class StaffService {
     private static final Double THIRTY_PERCENT = 0.3;
 
     /**
-    *"Um método que receba uma lista de funcionários, mês e ano e retorne o valor total
+    "Um método que receba uma lista de funcionários, mês e ano e retorne o valor total
     pago (salário e benefício) a esses funcionários no mês".
      * @param listOfStaffs
      * @param date
@@ -36,20 +36,41 @@ public class StaffService {
         return currentTotalCompensationPayed;
     };
 
-
     /**
-    **Um método que receba uma lista de funcionários, mês e ano e retorne o total pago
-    somente em salários no mês.
+    "Um método que receba uma lista de funcionários, mês e ano e retorne o total pago
+    somente em salários no mês".
      * @param listOfStaffs
      * @param date
      */
     public Double totalSalaryPaidInMonth(List<Staff> listOfStaffs, LocalDate date){
-        Double currentTotalSalaryPayed = 0.00;
+        Double currentTotalSalaryPaid = 0.00;
 
-        for(Staff staff : listOfStaffs){currentTotalSalaryPayed += calculateSalary(staff, date);};
+        for(Staff staff : listOfStaffs){currentTotalSalaryPaid += calculateSalary(staff, date);};
 
-        return currentTotalSalaryPayed;
+        return currentTotalSalaryPaid;
     }
+
+    /**
+    "Um método que receba uma lista somente com os funcionários que recebem
+    benefícios, mês e ano e retorne o total pago em benefícios no mês.".
+    * @param listOfStaffs
+    * @param date
+    */
+    public Double totalBenefitsPaidOnMonth(List<Staff> listOfStaffs, LocalDate date){
+        Double currentTotalBenefistPaidOnMonth = 0.00;
+        
+        for(Staff staff : listOfStaffs){
+            if (staff.getRecivesBenefit()) {
+                try {
+                    currentTotalBenefistPaidOnMonth += calculateBenefit(staff, date);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException(e.getMessage());
+                }
+            }
+        };
+
+        return currentTotalBenefistPaidOnMonth;
+    };
 
     private Double calculateSalary(Staff staff, LocalDate dateSource){
         Double initialSalary = staff.getOccupation().getInitialSalary();
