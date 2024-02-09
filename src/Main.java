@@ -22,7 +22,12 @@ public class Main {
                 .collect(Collectors.toList());
         
         System.out.println(
-            staffService.monthlyTotalPaymentValue(dataStaff, dataInput)
+            staffService.monthlyTotalCompensation(dataStaff, dataInput)
+        );
+
+        System.out.println(
+            staffService.totalSalaryPaidInMonth(dataStaff,dataInput
+            )
         );
     }
 }

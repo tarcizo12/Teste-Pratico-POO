@@ -14,9 +14,14 @@ public class StaffService {
     private static final Double TWENTY_PERCENT = 0.2;
     private static final Double THIRTY_PERCENT = 0.3;
 
-    /* Um método que receba uma lista de funcionários, mês e ano e retorne o valor totalpago (salário e benefício) a esses funcionários no mês.*/
-    public Double monthlyTotalPaymentValue(List<Staff> listOfStaffs, LocalDate date){
-        Double currentTotalSalaryPayed = 0.00;
+    /**
+    *"Um método que receba uma lista de funcionários, mês e ano e retorne o valor total
+    pago (salário e benefício) a esses funcionários no mês".
+     * @param listOfStaffs
+     * @param date
+     */
+    public Double monthlyTotalCompensation(List<Staff> listOfStaffs, LocalDate date){
+        Double currentTotalCompensationPayed = 0.00;
 
         for(Staff currentStaff : listOfStaffs){
             currentStaff.setFinalSalary(
@@ -25,11 +30,26 @@ public class StaffService {
 
             Double valueOfBenefit = calculateBenefit(currentStaff, date);
 
-            currentTotalSalaryPayed += currentStaff.getFinalSalary() + valueOfBenefit;
+            currentTotalCompensationPayed += currentStaff.getFinalSalary() + valueOfBenefit;
         };
 
-        return currentTotalSalaryPayed;
+        return currentTotalCompensationPayed;
     };
+
+
+    /**
+    **Um método que receba uma lista de funcionários, mês e ano e retorne o total pago
+    somente em salários no mês.
+     * @param listOfStaffs
+     * @param date
+     */
+    public Double totalSalaryPaidInMonth(List<Staff> listOfStaffs, LocalDate date){
+        Double currentTotalSalaryPayed = 0.00;
+
+        for(Staff staff : listOfStaffs){currentTotalSalaryPayed += calculateSalary(staff, date);};
+
+        return currentTotalSalaryPayed;
+    }
 
     private Double calculateSalary(Staff staff, LocalDate dateSource){
         Double initialSalary = staff.getOccupation().getInitialSalary();

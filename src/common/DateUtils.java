@@ -7,6 +7,10 @@ import java.time.YearMonth;
 
 public class DateUtils {
 
+        /**
+     * Verifica a vigencia entre uma data passada até o momento atual
+     * @param previousDate
+     */
     public static int calculateYearsPassed(LocalDate previousDate) {
         LocalDate currentDate = LocalDate.now();
 
@@ -19,10 +23,16 @@ public class DateUtils {
         return period.getYears();
     }
 
+
+    /**
+     * Retorna o ultimo dia do mês
+     * @param year
+     * @param month
+     */
     public static LocalDate lastDayOfMonth(int year, Month month){
         YearMonth yearMonth = YearMonth.of(year, month);
         LocalDate lastDayOfMonth = yearMonth.atEndOfMonth();
-        
+
         return lastDayOfMonth;
     }
 }
