@@ -20,18 +20,20 @@ public class Main {
                 .filter(staff -> staff.getRecivesBenefit())
                 .collect(Collectors.toList());
         
-        System.out.println(
-            staffService.monthlyTotalCompensation(dataStaff, dataInput)
-        );
+        // System.out.println(
+        //     staffService.monthlyTotalCompensation(dataStaff, dataInput)
+        // );
+
+        // System.out.println(
+        //     staffService.totalSalaryPaidInMonth(dataStaff,dataInput)
+        // );
+
+        // System.out.println(
+        //     staffService.totalBenefitsPaidOnMonth(staffsWithBenefit,dataInput)
+        // );
 
         System.out.println(
-            staffService.totalSalaryPaidInMonth(dataStaff,dataInput
-            )
-        );
-
-        System.out.println(
-            staffService.totalBenefitsPaidOnMonth(staffsWithBenefit,dataInput
-            )
+            staffService.highestPaidEmployeeInMonth(dataStaff, dataInput).getName()
         );
     }
 }

@@ -24,13 +24,7 @@ public class StaffService {
         Double currentTotalCompensationPayed = 0.00;
 
         for(Staff currentStaff : listOfStaffs){
-            currentStaff.setFinalSalary(
-                calculateSalary(currentStaff, date)
-            );
-
-            Double valueOfBenefit = calculateBenefit(currentStaff, date);
-
-            currentTotalCompensationPayed += currentStaff.getFinalSalary() + valueOfBenefit;
+            currentTotalCompensationPayed += calculateSalaryWithBenefits(currentStaff, date);
         };
 
         return currentTotalCompensationPayed;
@@ -72,12 +66,52 @@ public class StaffService {
         return currentTotalBenefistPaidOnMonth;
     };
 
+    /**
+    "Um método que receba uma lista de funcionários, mês e ano e retorne o que
+    recebeu o valor mais alto no mês."
+    * @param listOfStaffs
+    * @param date
+    */
+    public Staff highestPaidEmployeeInMonth(List<Staff> listOfStaffs, LocalDate date){
+        Staff highestPaid = null;
+
+        for(Staff currentStaff : listOfStaffs){
+
+            currentStaff.setFinalSalary(
+                calculateSalaryWithBenefits(currentStaff, date)
+            );
+
+            System.out.println(currentStaff.getName() + " recebeu: " + currentStaff.getFinalSalary());
+            
+            if (highestPaid != null) {
+                if(currentStaff.getFinalSalary() > highestPaid.getFinalSalary()){
+                    highestPaid = currentStaff;
+                }
+            }else{
+                highestPaid = currentStaff;
+            }
+        };
+
+        return highestPaid;
+    };
+
+    private Double calculateSalaryWithBenefits(Staff staff, LocalDate date){
+        staff.setFinalSalary(
+            calculateSalary(staff, date)
+        );
+
+        Double valueOfBenefit = calculateBenefit(staff, date);
+
+        return valueOfBenefit + staff.getFinalSalary();
+    };
+
     private Double calculateSalary(Staff staff, LocalDate dateSource){
         Double initialSalary = staff.getOccupation().getInitialSalary();
 
         int yearsOfService = DateUtils.calculateYearsPassed(
             staff.getContractDate()
         );
+
 
         return initialSalary + calculateAnnualServiceBonus(staff.getOccupation(),yearsOfService);
     };
