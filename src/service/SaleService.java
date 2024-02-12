@@ -5,6 +5,7 @@ import java.util.List;
 import model.Sale;
 import model.Staff;
 import common.DateUtils;
+import java.time.LocalDate;
 
 public class SaleService {
     public Map<Staff, Double> resumeOfSales(LocalDate dateSource){
