@@ -38,7 +38,7 @@ public class DateUtils {
         return lastDayOfMonth;
     };
 
-        /**
+    /**
      * Retorna a string data em formato brasileirro.
      * @param dataString
      */
@@ -54,5 +54,14 @@ public class DateUtils {
 
         // Formata a data para o formato brasileiro
         return formatoSaida.format(data);
+    };
+
+    /**
+     * Verifica se duas datas estão no mesmo mês/ano.
+     * @param date1
+     * @param date2
+     */
+    public static boolean areMonthsAndYearsEqual(LocalDate date1, LocalDate date2) {
+        return date1.getYear() == date2.getYear() && date1.getMonthValue() == date2.getMonthValue();
     }
 }

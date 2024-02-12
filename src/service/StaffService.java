@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Map;
 import common.DateUtils;
+import common.StringUtils;
 import data.SaleData;
 import model.Occupation;
 import model.Sale;
@@ -212,7 +213,8 @@ public class StaffService {
             .collect(Collectors.toList());
     
             for(Sale registerSale : registersSaleOfStaff){
-                if (registerSale.getDateOfSale().equals(dateSource)) {
+                
+                if (DateUtils.areMonthsAndYearsEqual(registerSale.getDateOfSale(), dateSource) ) {
                     sumOfBenefit += registerSale.getValueOfSale()*THIRTY_PERCENT;
                 }
             }
