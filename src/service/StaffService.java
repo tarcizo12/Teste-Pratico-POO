@@ -134,7 +134,7 @@ public class StaffService {
     * @param date
     */
     public Staff findTopSellingVendor(List<Staff> listOfSellers, LocalDate date){
-        Map<Staff, Double> salesSummary = saleService.resumeOfSales();
+        Map<Staff, Double> salesSummary = saleService.resumeOfSales(date);
         Staff bestSeller = null;
         Double bestSumOfSales = 0.00;
 
