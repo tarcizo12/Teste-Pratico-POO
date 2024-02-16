@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Map;
+import java.util.Optional;
+
 import common.DateUtils;
 import common.StringUtils;
 import data.SaleData;
@@ -134,25 +136,17 @@ public class StaffService {
     * @param date
     */
     public Staff findTopSellingVendor(List<Staff> listOfSellers, LocalDate date){
-        Map<Staff, Double> salesSummary = saleService.resumeOfSales(date);
-        Staff bestSeller = null;
-        Double bestSumOfSales = 0.00;
+        List<Sale> salesSummary = saleService.resumeOfSales(date);
 
-        for (Map.Entry<Staff, Double> entry : salesSummary.entrySet()) {
-            Staff sellerKey = entry.getKey();
-            Double sumOfSales = entry.getValue();
+        Optional<Sale> bestSeller = salesSummary.stream()
+                .max((firstObj, secondObj) -> Double.compare(firstObj.getValueOfSale(), secondObj.getValueOfSale()));
 
-            if (bestSeller != null) {
-                if(sumOfSales > bestSumOfSales){
-                    bestSumOfSales = sumOfSales;
-                    bestSeller = sellerKey;
-                }
-            }else{
-                bestSeller = entry.getKey();
-            };
+        if(bestSeller.isPresent()){
+            return bestSeller.get().getStaff();
+        }else{
+            throw new IllegalArgumentException("Não foi possivel determinar maior venda nessa data");
         }
-        
-        return bestSeller;
+
     };
 
     private Double calculateSalaryWithBenefits(Staff staff, LocalDate date){

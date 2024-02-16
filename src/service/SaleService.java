@@ -1,30 +1,16 @@
 import data.SaleData;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.List;
 import model.Sale;
-import model.Staff;
 import common.DateUtils;
 import java.time.LocalDate;
 
 public class SaleService {
-    public Map<Staff, Double> resumeOfSales(LocalDate dateSource){
-        Map<Staff, Double> resumeMap = new HashMap<>();
+    public List<Sale> resumeOfSales(LocalDate dateSource){
 
-        List<Sale> dataSale = SaleData.getAllSales();
+        List<Sale> dataSale = SaleData.getAllSales().stream()
+        .filter(e->DateUtils.areMonthsAndYearsEqual(e.getDateOfSale(), dateSource)).collect(Collectors.toList());
 
-        for(Sale sale : dataSale){
-            Double saleValue = sale.getValueOfSale();
-            
-            if (resumeMap.containsKey(resumeMap)) {
-                if (DateUtils.areMonthsAndYearsEqual(sale.getDateOfSale(), dateSource) ) {
-                    resumeMap.put(sale.getStaff(), resumeMap.get(sale.getStaff()) + saleValue);
-                };
-            } else {
-                resumeMap.put(sale.getStaff(), saleValue);
-            }
-        };
-
-        return resumeMap;
+        return dataSale;
     } 
 }

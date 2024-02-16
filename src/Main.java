@@ -16,7 +16,7 @@ public class Main {
         StaffService staffService = new StaffService();
         List<Staff> dataStaff = StaffData.getAllStaffRegisters();
 
-        LocalDate dateInput = LocalDate.of(2022, Month.JANUARY, 1);
+        LocalDate dateInput = LocalDate.of(2022, Month.APRIL, 15);
         String formattedDate = DateUtils.formatBrazilianDate(dateInput.toString());
 
         List<Staff> staffsWithBenefit = dataStaff.stream()
